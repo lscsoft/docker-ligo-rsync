@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for j in $(seq 0 255); do
+    hexval=$(printf '%02x\n' $j)
+    parallel --will-cite --semaphore --jobs 2 "rsync -av \
+      -e 'ssh -o UserKnownHostsFile=/root/.ssh-hosts/bastion-us-west-2-host-key' \
+      ${1}/./${hexval} \
+      ${2}"
+done
