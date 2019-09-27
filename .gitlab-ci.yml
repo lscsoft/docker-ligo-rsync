@@ -1,7 +1,7 @@
 image: docker:latest
 
 variables:
-  REPOSITORY: 'cgca/ligo-rsync'
+  REPOSITORY: 'igwn/rsync'
 
 stages:
   - docker
