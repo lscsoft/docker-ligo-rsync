@@ -1,7 +1,7 @@
 image: docker:latest
 
 variables:
-  REPOSITORY: 'igwn/rsync'
+  RSYNC_REPOSITORY: 'igwn/rsync'
 
 stages:
   - docker
@@ -16,7 +16,7 @@ docker:build:
         # push to docker hub
         if [[ $CI_PROJECT_NAMESPACE == 'docker' ]]; then
           docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
-          docker tag $CI_REGISTRY_IMAGE:latest $REPOSITORY:latest
-          docker push $REPOSITORY:latest
+          docker tag $CI_REGISTRY_IMAGE:latest $RSYNC_REPOSITORY:latest
+          docker push $RSYNC_REPOSITORY:latest
           docker logout
         fi
